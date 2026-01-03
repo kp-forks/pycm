@@ -1750,4 +1750,23 @@ Zero       2          0
 >>> cm = ConfusionMatrix([0, 0, 1, 0], y_pred_act, threshold=activation, transpose=2, metrics_off=True)
 >>> assert isclose(cm.brier_score(pos_class=1), 0.224225, abs_tol=ABS_TOL, rel_tol=REL_TOL)
 >>> assert isclose(cm.brier_score(pos_class=0), 0.509225, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> import numpy as np
+>>> maxval = 10e7
+>>> matrix = np.array([[maxval,maxval],[maxval,2]]).astype(int)
+>>> cm = ConfusionMatrix(matrix=matrix)
+>>> assert isclose(cm.class_stat["MCC"][0], -0.4999999800000004, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["MCC"][1], -0.4999999800000004, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["ACC"][0], 0.33333333777777774, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["ACC"][1], 0.33333333777777774, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["RACC"][0], 0.4444444385185186, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["RACC"][1], 0.11111111407407408, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["Q"][0], -0.9999999600000007, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["Q"][1], -0.9999999600000007, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["F1"][0], 0.5, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["F1"][1], 1.9999999600000007e-08, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["OOC"][0], 0.5, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.class_stat["OOC"][1], 1.9999999600000007e-08, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.overall_stat["Chi-Squared"], 74999994.5000002, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.overall_stat["Overall MCC"], -0.4999999800000004, abs_tol=ABS_TOL, rel_tol=REL_TOL)
+>>> assert isclose(cm.overall_stat["Bangdiwala B"], 0.1999999984000001, abs_tol=ABS_TOL, rel_tol=REL_TOL)
 """
