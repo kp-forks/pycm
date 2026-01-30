@@ -513,10 +513,16 @@ True
 'Negligible'
 >>> Q_analysis(0.75)
 'Strong'
+>>> Q_analysis(float('nan'))
+'None'
 >>> MCC_analysis(0.9)
 'Very Strong'
+>>> MCC_analysis(float('nan'))
+'None'
 >>> V_analysis(0.8)
 'Very Strong'
+>>> V_analysis(float('nan'))
+'None'
 >>> kappa_analysis_fleiss(0.75)
 'Excellent'
 >>> kappa_analysis_koch(-0.1)
@@ -533,12 +539,16 @@ True
 'Almost Perfect'
 >>> kappa_analysis_koch(1.2)
 'None'
+>>> kappa_analysis_koch(float('nan'))
+'None'
 >>> kappa_analysis_fleiss(0.4)
 'Intermediate to Good'
 >>> kappa_analysis_fleiss(0.75)
 'Excellent'
 >>> kappa_analysis_fleiss(1.2)
 'Excellent'
+>>> kappa_analysis_fleiss(float('nan'))
+'None'
 >>> kappa_analysis_altman(-0.2)
 'Poor'
 >>> kappa_analysis_altman(0.2)
@@ -551,6 +561,8 @@ True
 'Very Good'
 >>> kappa_analysis_altman(1.2)
 'None'
+>>> kappa_analysis_altman(float('nan'))
+'None'
 >>> kappa_analysis_fleiss(0.2)
 'Poor'
 >>> kappa_analysis_cicchetti(0.3)
@@ -562,6 +574,8 @@ True
 >>> kappa_analysis_cicchetti(0.8)
 'Excellent'
 >>> kappa_analysis_cicchetti(1.2)
+'None'
+>>> kappa_analysis_cicchetti(float('nan'))
 'None'
 >>> lambda_analysis(0)
 'None'
@@ -577,12 +591,16 @@ True
 'Very Strong'
 >>> lambda_analysis(1)
 'Perfect'
+>>> lambda_analysis(float('nan'))
+'None'
 >>> alpha_analysis(0)
 'Low'
 >>> alpha_analysis(0.667)
 'Tentative'
 >>> alpha_analysis(0.8)
 'High'
+>>> alpha_analysis(float('nan'))
+'None'
 >>> pearson_C_analysis(0)
 'None'
 >>> pearson_C_analysis(0.05)
@@ -593,6 +611,8 @@ True
 'Medium'
 >>> pearson_C_analysis(0.3)
 'Strong'
+>>> pearson_C_analysis(float('nan'))
+'None'
 >>> PLR_analysis("None")
 'None'
 >>> PLR_analysis(1)
@@ -603,6 +623,8 @@ True
 'Fair'
 >>> PLR_analysis(11)
 'Good'
+>>> PLR_analysis(float('nan'))
+'None'
 >>> DP_analysis(0.2)
 'Poor'
 >>> DP_analysis(1.5)
@@ -611,6 +633,8 @@ True
 'Fair'
 >>> DP_analysis(10)
 'Good'
+>>> DP_analysis(float('nan'))
+'None'
 >>> AUC_analysis(0.5)
 'Poor'
 >>> AUC_analysis(0.65)
@@ -623,6 +647,10 @@ True
 'Excellent'
 >>> AUC_analysis(1.0)
 'Excellent'
+>>> AUC_analysis(float('nan'))
+'None'
+>>> NLR_analysis(float('nan'))
+'None'
 >>> PC_AC1_calc(1, 1, 1)
 'None'
 >>> assert isclose(PC_AC1_calc({1: 123, 2: 2}, {1: 120, 2: 5}, {1: 125, 2: 125}), 0.05443200000000002, abs_tol=ABS_TOL, rel_tol=REL_TOL)
